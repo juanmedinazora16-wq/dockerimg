@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi app web en Docker</title>
+  <link rel="icon" href="img/contenedor.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --verde: #1F4E4A;
+      --mostaza: #E0A526;
+      --papel: #EEF0EA;
+      --tinta: #14201F;
+      --oxido: #A5382B;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      background: var(--papel);
+      color: var(--tinta);
+      line-height: 1.55;
+    }
+    header, main, footer { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    header { padding-top: 28px; font-weight: 700; color: var(--verde); }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 48px 0 40px;
+    }
+    h1 {
+      font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.02;
+      margin: 0 0 16px;
+      color: var(--verde);
+    }
+    .hero p { max-width: 46ch; margin: 0; }
+    .hero img { width: 100%; height: auto; border-radius: 8px; display: block; }
+    .panel {
+      background: #fff;
+      border-left: 8px solid var(--mostaza);
+      padding: 24px 28px;
+      margin-bottom: 24px;
+    }
+    h2 { margin: 0 0 12px; font-size: 1.3rem; color: var(--verde); }
+    .contador { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .numero { font-size: 3rem; font-weight: 800; min-width: 3ch; color: var(--tinta); }
+    button {
+      font: inherit; font-weight: 700;
+      padding: 10px 18px;
+      border: 2px solid var(--verde);
+      background: var(--verde); color: #fff;
+      border-radius: 4px; cursor: pointer;
+    }
+    button.sec { background: transparent; color: var(--verde); }
+    button:hover { filter: brightness(1.15); }
+    button:focus-visible { outline: 3px solid var(--mostaza); outline-offset: 2px; }
+    pre {
+      background: var(--tinta); color: #F2F4EE;
+      padding: 16px 18px; border-radius: 4px;
+      overflow-x: auto; margin: 0;
+      font-family: Consolas, "Courier New", monospace; font-size: .95rem;
+    }
+    footer { padding-top: 8px; padding-bottom: 40px; color: #55625F; font-size: .9rem; }
+    @media (max-width: 720px) { .hero { grid-template-columns: 1fr; padding-top: 28px; } }
+  </style>
+</head>
+<body>
+  <header>mi-app-web</header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Tu sitio, empaquetado en un contenedor</h1>
+        <p>Esta página la sirve Nginx desde una imagen de Docker. Si la ves en tu navegador, el contenedor está funcionando.</p>
+      </div>
+      <img src="img/contenedor.svg" alt="Ilustración de un contenedor de carga verde">
+    </section>
+
+    <section class="panel">
+      <h2>Contenedores cargados</h2>
+      <div class="contador">
+        <span class="numero" id="numero">0</span>
+        <button id="sumar">Cargar uno</button>
+        <button id="restar" class="sec">Descargar uno</button>
+        <button id="reiniciar" class="sec">Reiniciar</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Cómo ejecutarla</h2>
+<pre>docker build -t mi-app-web .
+docker run -d -p 8080:80 --name mi-app-web mi-app-web</pre>
+      <p>Luego abre <strong>http://localhost:8080</strong>.</p>
+    </section>
+  </main>
+
+  <footer>Hora del navegador: <span id="hora"></span></footer>
+
+  <script>
+    const numero = document.getElementById("numero");
+    let total = 0;
+    try { total = parseInt(localStorage.getItem("total") || "0", 10) || 0; } catch (e) {}
+
+    function pintar() {
+      numero.textContent = total;
+      try { localStorage.setItem("total", total); } catch (e) {}
+    }
+    document.getElementById("sumar").onclick = () => { total++; pintar(); };
+    document.getElementById("restar").onclick = () => { total = Math.max(0, total - 1); pintar(); };
+    document.getElementById("reiniciar").onclick = () => { total = 0; pintar(); };
+    pintar();
+
+    const hora = document.getElementById("hora");
+    setInterval(() => { hora.textContent = new Date().toLocaleTimeString("es-CO"); }, 1000);
+    hora.textContent = new Date().toLocaleTimeString("es-CO");
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" role="img" aria-label="Contenedor de carga verde sobre una base">
+  <rect width="600" height="380" fill="#E3E7DD"/>
+  <rect x="0" y="318" width="600" height="62" fill="#C9CFC2"/>
+  <rect x="70" y="86" width="460" height="226" rx="6" fill="#1F4E4A"/>
+  <g stroke="#173B38" stroke-width="6">
+    <line x1="100" y1="96" x2="100" y2="302"/><line x1="126" y1="96" x2="126" y2="302"/>
+    <line x1="152" y1="96" x2="152" y2="302"/><line x1="178" y1="96" x2="178" y2="302"/>
+    <line x1="204" y1="96" x2="204" y2="302"/><line x1="230" y1="96" x2="230" y2="302"/>
+    <line x1="256" y1="96" x2="256" y2="302"/><line x1="282" y1="96" x2="282" y2="302"/>
+    <line x1="308" y1="96" x2="308" y2="302"/><line x1="334" y1="96" x2="334" y2="302"/>
+    <line x1="360" y1="96" x2="360" y2="302"/><line x1="386" y1="96" x2="386" y2="302"/>
+  </g>
+  <rect x="400" y="86" width="130" height="226" fill="#256058"/>
+  <g stroke="#173B38" stroke-width="5">
+    <line x1="465" y1="86" x2="465" y2="312"/>
+    <line x1="430" y1="130" x2="430" y2="270"/><line x1="500" y1="130" x2="500" y2="270"/>
+  </g>
+  <rect x="436" y="190" width="22" height="8" fill="#E0A526"/>
+  <rect x="472" y="190" width="22" height="8" fill="#E0A526"/>
+  <rect x="70" y="86" width="460" height="14" fill="#173B38"/>
+  <rect x="70" y="298" width="460" height="14" fill="#173B38"/>
+  <rect x="96" y="130" width="130" height="34" fill="#E0A526"/>
+  <text x="108" y="154" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#14201F">MI-APP-WEB</text>
+  <rect x="150" y="312" width="40" height="14" fill="#14201F"/>
+  <rect x="410" y="312" width="40" height="14" fill="#14201F"/>
+</svg>
